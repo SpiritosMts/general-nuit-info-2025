@@ -6,7 +6,13 @@
 ![Next.js](https://img.shields.io/badge/Next.js-14-black)
 ![License](https://img.shields.io/badge/License-Libre-blue)
 
-## 🎯 Présentation
+## � Accès à l'Application
+
+**🔗 URL Publique : https://village-nird-2025.netlify.app**
+
+---
+
+## �🎯 Présentation
 
 **Le Village NIRD** est une plateforme gamifiée qui aide les établissements scolaires français à :
 - **Diagnostiquer** leur dépendance aux Big Tech
