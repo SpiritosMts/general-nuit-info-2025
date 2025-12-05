@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useAppStore } from '@/lib/store'
 import Navigation from '@/components/Navigation'
 import HeroSection from '@/components/HeroSection'
@@ -8,9 +9,23 @@ import AlternativesSection from '@/components/AlternativesSection'
 import RoadmapSection from '@/components/RoadmapSection'
 import ResourcesSection from '@/components/ResourcesSection'
 import VillageSection from '@/components/VillageSection'
+import AchievementToast from '@/components/AchievementToast'
+import ShareResults from '@/components/ShareResults'
+import Confetti from '@/components/Confetti'
 
 export default function Home() {
-  const { currentSection } = useAppStore()
+  const { currentSection, quizCompleted } = useAppStore()
+  const [showConfetti, setShowConfetti] = useState(false)
+  const [prevQuizCompleted, setPrevQuizCompleted] = useState(false)
+
+  // Trigger confetti when quiz is completed
+  useEffect(() => {
+    if (quizCompleted && !prevQuizCompleted) {
+      setShowConfetti(true)
+      setTimeout(() => setShowConfetti(false), 100)
+    }
+    setPrevQuizCompleted(quizCompleted)
+  }, [quizCompleted, prevQuizCompleted])
 
   const renderSection = () => {
     switch (currentSection) {
@@ -33,6 +48,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
+      <Confetti trigger={showConfetti} />
+      <AchievementToast />
+      <ShareResults />
       <Navigation />
       {renderSection()}
       
